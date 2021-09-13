@@ -10,7 +10,17 @@
 
             <div class="d-flex align-center justify-space-between">
               <div>{{ item.date }}</div>
-              <v-btn color="deep-purple lighten-2" text> Like </v-btn>
+              <v-btn
+                v-if="!likedPictures.includes(item)"
+                color="deep-purple lighten-2"
+                text
+                @click="likedPictures.push(item)"
+              >
+                Like
+              </v-btn>
+              <v-btn v-else color="deep-purple lighten-2" @click="unlikePicture(item)">
+                Unlike
+              </v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -25,9 +35,16 @@ export default {
   data() {
     return {
       pictureOfTheDayList: [],
+      likedPictures: [],
     };
   },
   components: {},
+  methods: {
+    unlikePicture(picture) {
+      const index = this.likedPictures.findIndex((el) => el.url === picture.url);
+      this.likedPictures.splice(index, 1);
+    },
+  },
   async created() {
     const resp = await this.$api.pictureOfTheDay.getDefaultCollection();
     this.pictureOfTheDayList = resp.data.filter((item) => item.media_type === "image").reverse();
