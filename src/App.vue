@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar height="40px" app color="indigo darken-4"> </v-app-bar>
+    <AppBar />
 
     <v-main>
       <router-view />
@@ -9,11 +9,11 @@
 </template>
 
 <script>
+import AppBar from "@/components/AppBar.vue";
 export default {
   name: "App",
 
-  data: () => ({
-    //
-  }),
+  data: () => ({}),
+  components: { AppBar },
 };
 </script>
