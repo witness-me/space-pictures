@@ -1,5 +1,16 @@
 <template>
   <v-container>
+    <h1 class="header-text-1">Spacey</h1>
+    <div>
+      Here you will see the collection of most stunning photos, thorougly selected for you by NASA.
+      By defeault, you will get the best the "Pictures of the day" for the last month.
+      Alternatively, you could select any starting date and pick another time range. Every photo has
+      a "Like" button, use it to add it to your favourites.
+    </div>
+    <div>
+      If you are interested in something specific, feel free to type any title in the searchbox and
+      you will get the collection of NASA's photos by your query.
+    </div>
     <v-row>
       <v-col v-for="(item, i) in pictureOfTheDayList" :key="i" cols="12" sm="6" lg="4">
         <v-card>

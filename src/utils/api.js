@@ -11,8 +11,6 @@ const api = (function () {
         // var d = new Date();
         // d.setMonth(d.getMonth() - 1);
         // console.log(d);
-        console.log(process.env);
-
         return HTTP.get("", {
           params: { start_date: "2021-08-05", api_key: process.env.VUE_APP_API_KEY },
         });
@@ -27,8 +25,7 @@ const api = (function () {
   };
 })("vueInstanse");
 export const restAPI = {
-  // eslint-disable-next-line no-unused-vars
-  install(Vue, options) {
+  install(Vue) {
     Vue.prototype.$api = api;
   },
 };
