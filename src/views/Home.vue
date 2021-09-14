@@ -12,31 +12,59 @@
       you will get the collection of NASA's photos by your query.
     </div>
 
-    <div class="d-flex align-center">
+    <div class="d-flex align-center flex-wrap">
       <v-text-field
         hide-details
-        class="gray--text text--lighten-3 mr-3"
+        class="gray--text text--lighten-3 mr-3 my-1"
         color="purple lighten-2"
         label="Type your search string"
-        style="max-width: 300px"
+        style="max-width: 250px"
         outlined
+        dense
         v-model="searchString"
-      />
-      <v-btn> Search </v-btn>
+      >
+        <template #append>
+          <v-btn height="24px" width="75px"> Search </v-btn>
+        </template>
+      </v-text-field>
+      <v-btn class="my-1"> Search </v-btn>
       <v-spacer />
 
-      <v-tooltip bottom max-width="300px">
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn v-bind="attrs" v-on="on">
-            Pick date
-            <v-icon class="ml-1">mdi-help-circle-outline</v-icon>
-          </v-btn>
+      <v-menu
+        v-model="showDatePicker"
+        :close-on-content-click="false"
+        :close-on-click="true"
+        nudge-left="152px"
+        nudge-bottom="5px"
+        :offset-y="true"
+        bottom
+        transition="slide-y-transition"
+        max-width="290px"
+        min-width="290px"
+      >
+        <template v-slot:activator="{ on: onMenu }">
+          <v-tooltip bottom :disabled="showDatePicker" max-width="300px">
+            <template v-slot:activator="{ on: onTooltip }">
+              <v-btn class="my-2 ml-2" v-on="{ ...onMenu, ...onTooltip }">
+                Pick date
+                <v-icon class="ml-1">mdi-help-circle-outline</v-icon>
+              </v-btn>
+            </template>
+            <span
+              >By defeault, you are getting pictures for the last month. If you wish to change this
+              time range, you can choose an alternative date from which this period will begin</span
+            >
+          </v-tooltip>
         </template>
-        <span
-          >By defeault, you are getting pictures for the last month. If you wish to change this time
-          range, you can choose an alternative date from which this period will begin</span
-        >
-      </v-tooltip>
+
+        <v-date-picker
+          v-model="selectedDate"
+          color="purple darken-2"
+          no-title
+          @input="showDatePicker = false"
+          nudge-
+        ></v-date-picker>
+      </v-menu>
     </div>
     <v-row>
       <v-col
@@ -81,6 +109,8 @@ export default {
   data() {
     return {
       searchString: "",
+      showDatePicker: false,
+      selectedDate: null,
     };
   },
   components: {},
