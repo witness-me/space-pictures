@@ -9,7 +9,7 @@
     </div>
     <div>
       If you are interested in something specific, feel free to type any title in the searchbox and
-      you will get the collection of NASA's photos by your query.
+      you will get the collection of NASA's best shots by your query.
     </div>
 
     <div class="d-flex align-center flex-wrap">
@@ -61,8 +61,8 @@
           v-model="selectedDate"
           color="purple darken-2"
           no-title
-          @input="showDatePicker = false"
-          nudge-
+          :max="today"
+          @input="onDateSelect"
         ></v-date-picker>
       </v-menu>
     </div>
@@ -103,6 +103,7 @@
 
 <script>
 import { mapMutations } from "vuex";
+import datesMixin from "@/utils/datesMixin";
 
 export default {
   name: "Home",
@@ -113,12 +114,17 @@ export default {
       selectedDate: null,
     };
   },
+  mixins: [datesMixin],
   components: {},
   methods: {
     ...mapMutations(["addToFavorites", "removeFromFavorites"]),
+    onDateSelect(date) {
+      this.showDatePicker = false;
+      this.$store.dispatch("fetchPicturesOfTheDay", date);
+    },
   },
   async created() {
-    this.$store.dispatch("fetchPicturesOfTheDay");
+    this.$store.dispatch("fetchPicturesOfTheDay", this.get1MonthAgo);
   },
 };
 </script>

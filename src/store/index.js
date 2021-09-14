@@ -30,8 +30,8 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    fetchPicturesOfTheDay: async ({ commit }) => {
-      const resp = await api.getPicturesOfTheDay();
+    fetchPicturesOfTheDay: async ({ commit }, date) => {
+      const resp = await api.getPicturesOfTheDay(date);
       const picturesList = resp.data.filter((item) => item.media_type === "image").reverse();
 
       commit("setPicturesOfTheDay", picturesList);
