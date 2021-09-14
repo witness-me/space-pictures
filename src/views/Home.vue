@@ -20,7 +20,7 @@
         lg="4"
       >
         <v-card>
-          <v-img :src="item.url"></v-img>
+          <img :src="item.url" style="width: 100%" alt="" />
           <v-card-title>{{ item.title }}</v-card-title>
           <v-card-text>
             <div class="my-4 text-subtitle-1">{{ item.explanation }}</div>
@@ -28,14 +28,14 @@
             <div class="d-flex align-center justify-space-between">
               <div>{{ item.date }}</div>
               <v-btn
-                v-if="!likedPictures.includes(item)"
+                v-if="!$store.getters.getFavorites.includes(item.url)"
                 color="deep-purple lighten-2"
                 text
-                @click="likedPictures.push(item)"
+                @click="addToFavorites(item.url)"
               >
                 Like
               </v-btn>
-              <v-btn v-else color="deep-purple lighten-2" @click="unlikePicture(item)">
+              <v-btn v-else color="deep-purple lighten-2" @click="removeFromFavorites(item.url)">
                 Unlike
               </v-btn>
             </div>
@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   name: "Home",
   data() {
@@ -57,6 +59,7 @@ export default {
   },
   components: {},
   methods: {
+    ...mapMutations(["addToFavorites", "removeFromFavorites"]),
     unlikePicture(picture) {
       const index = this.likedPictures.findIndex((el) => el.url === picture.url);
       this.likedPictures.splice(index, 1);
