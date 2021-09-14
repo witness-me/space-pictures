@@ -83,14 +83,14 @@
             <div class="d-flex align-center justify-space-between">
               <div>{{ item.date }}</div>
               <v-btn
-                v-if="!$store.getters.getFavorites.includes(item.url)"
+                v-if="!$store.getters.getFavorites.includes(item)"
                 color="deep-purple lighten-2"
                 text
-                @click="addToFavorites(item.url)"
+                @click="addToFavorites(item)"
               >
                 Like
               </v-btn>
-              <v-btn v-else color="deep-purple lighten-2" @click="removeFromFavorites(item.url)">
+              <v-btn v-else color="deep-purple lighten-2" @click="removeFromFavorites(item)">
                 Unlike
               </v-btn>
             </div>

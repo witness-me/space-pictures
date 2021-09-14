@@ -21,11 +21,11 @@ export default new Vuex.Store({
     setPicturesOfTheDay(state, payload) {
       state.picturesOfTheDay = payload;
     },
-    addToFavorites(state, url) {
-      state.favoritePictures.push(url);
+    addToFavorites(state, picture) {
+      state.favoritePictures.push(picture);
     },
-    removeFromFavorites(state, url) {
-      const index = state.favoritePictures.findIndex((el) => el.url === url);
+    removeFromFavorites(state, picture) {
+      const index = state.favoritePictures.findIndex((el) => el.url === picture.url);
       state.favoritePictures.splice(index, 1);
     },
   },
