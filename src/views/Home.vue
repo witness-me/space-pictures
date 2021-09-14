@@ -12,7 +12,13 @@
       you will get the collection of NASA's photos by your query.
     </div>
     <v-row>
-      <v-col v-for="(item, i) in pictureOfTheDayList" :key="i" cols="12" sm="6" lg="4">
+      <v-col
+        v-for="(item, i) in $store.getters.getPictureOfTheDayList"
+        :key="i"
+        cols="12"
+        sm="6"
+        lg="4"
+      >
         <v-card>
           <v-img :src="item.url"></v-img>
           <v-card-title>{{ item.title }}</v-card-title>
@@ -57,8 +63,7 @@ export default {
     },
   },
   async created() {
-    const resp = await this.$api.pictureOfTheDay.getDefaultCollection();
-    this.pictureOfTheDayList = resp.data.filter((item) => item.media_type === "image").reverse();
+    this.$store.dispatch("fetchPicturesOfTheDay");
   },
 };
 </script>

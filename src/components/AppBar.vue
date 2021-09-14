@@ -19,9 +19,5 @@ export default {
       console.log(this.$router.currentRoute);
     },
   },
-  created() {
-    // console.log(router);
-    console.log(this.$route);
-  },
 };
 </script>
