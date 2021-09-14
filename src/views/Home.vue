@@ -11,6 +11,33 @@
       If you are interested in something specific, feel free to type any title in the searchbox and
       you will get the collection of NASA's photos by your query.
     </div>
+
+    <div class="d-flex align-center">
+      <v-text-field
+        hide-details
+        class="gray--text text--lighten-3 mr-3"
+        color="purple lighten-2"
+        label="Type your search string"
+        style="max-width: 300px"
+        outlined
+        v-model="searchString"
+      />
+      <v-btn> Search </v-btn>
+      <v-spacer />
+
+      <v-tooltip bottom max-width="300px">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn v-bind="attrs" v-on="on">
+            Pick date
+            <v-icon class="ml-1">mdi-help-circle-outline</v-icon>
+          </v-btn>
+        </template>
+        <span
+          >By defeault, you are getting pictures for the last month. If you wish to change this time
+          range, you can choose an alternative date from which this period will begin</span
+        >
+      </v-tooltip>
+    </div>
     <v-row>
       <v-col
         v-for="(item, i) in $store.getters.getPicturesOfTheDay"
@@ -52,7 +79,9 @@ import { mapMutations } from "vuex";
 export default {
   name: "Home",
   data() {
-    return {};
+    return {
+      searchString: "",
+    };
   },
   components: {},
   methods: {
