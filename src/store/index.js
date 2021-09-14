@@ -6,20 +6,20 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    pictureOfTheDayList: [],
+    picturesOfTheDay: [],
     favoritePictures: [],
   },
   getters: {
-    getPictureOfTheDayList(state) {
-      return state.pictureOfTheDayList;
+    getPicturesOfTheDay(state) {
+      return state.picturesOfTheDay;
     },
     getFavorites(state) {
       return state.favoritePictures;
     },
   },
   mutations: {
-    setPictureOfTheDayList(state, payload) {
-      state.pictureOfTheDayList = payload;
+    setPicturesOfTheDay(state, payload) {
+      state.picturesOfTheDay = payload;
     },
     addToFavorites(state, url) {
       state.favoritePictures.push(url);
@@ -31,10 +31,10 @@ export default new Vuex.Store({
   },
   actions: {
     fetchPicturesOfTheDay: async ({ commit }) => {
-      const resp = await api.getPicturesOfTheDayList();
+      const resp = await api.getPicturesOfTheDay();
       const picturesList = resp.data.filter((item) => item.media_type === "image").reverse();
 
-      commit("setPictureOfTheDayList", picturesList);
+      commit("setPicturesOfTheDay", picturesList);
     },
   },
   modules: {},

@@ -13,7 +13,7 @@
     </div>
     <v-row>
       <v-col
-        v-for="(item, i) in $store.getters.getPictureOfTheDayList"
+        v-for="(item, i) in $store.getters.getPicturesOfTheDay"
         :key="i"
         cols="12"
         sm="6"
@@ -52,18 +52,11 @@ import { mapMutations } from "vuex";
 export default {
   name: "Home",
   data() {
-    return {
-      pictureOfTheDayList: [],
-      likedPictures: [],
-    };
+    return {};
   },
   components: {},
   methods: {
     ...mapMutations(["addToFavorites", "removeFromFavorites"]),
-    unlikePicture(picture) {
-      const index = this.likedPictures.findIndex((el) => el.url === picture.url);
-      this.likedPictures.splice(index, 1);
-    },
   },
   async created() {
     this.$store.dispatch("fetchPicturesOfTheDay");
