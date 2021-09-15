@@ -30,24 +30,34 @@ export default new Vuex.Store({
     },
     addToFavorites(state, picture) {
       state.favoritePictures.push(picture);
+      localStorage.setItem("favorites", JSON.stringify(state.favoritePictures));
     },
     removeFromFavorites(state, picture) {
       const index = state.favoritePictures.findIndex((el) => el.url === picture.url);
       state.favoritePictures.splice(index, 1);
+      localStorage.setItem("favorites", JSON.stringify(state.favoritePictures));
     },
     clearFavorites(state) {
       state.favoritePictures = [];
+      localStorage.setItem("favorites", "[]");
+    },
+    retrieveFavoritesFromLocalStorage(state) {
+      state.favoritePictures = JSON.parse(localStorage.getItem("favorites")) || [];
     },
   },
   actions: {
     fetchPicturesOfTheDay: async ({ commit }, date) => {
       commit("setPendingPicturesLoading", true);
 
-      const resp = await api.getPicturesOfTheDay(date);
-      const picturesList = resp.data.filter((item) => item.media_type === "image").reverse();
-
-      commit("setPicturesOfTheDay", picturesList);
-      commit("setPendingPicturesLoading", false);
+      try {
+        const resp = await api.getPicturesOfTheDay(date);
+        const picturesList = resp.data.filter((item) => item.media_type === "image").reverse();
+        commit("setPicturesOfTheDay", picturesList);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        commit("setPendingPicturesLoading", false);
+      }
     },
   },
   modules: {},

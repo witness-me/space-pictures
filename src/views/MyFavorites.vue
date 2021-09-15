@@ -29,3 +29,15 @@
     </div>
   </v-container>
 </template>
+
+<script>
+export default {
+  name: "MyFavorites",
+  data() {
+    return {};
+  },
+  async created() {
+    this.$store.commit("retrieveFavoritesFromLocalStorage");
+  },
+};
+</script>

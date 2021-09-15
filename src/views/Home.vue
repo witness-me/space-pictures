@@ -3,7 +3,7 @@
     <h1 class="header-text-1">Spacey</h1>
     <div>
       Here you will see the collection of most stunning photos, thorougly selected for you by NASA.
-      By defeault, you will get the best the "Pictures of the day" for the last month.
+      By defeault, you will get the best of the "Pictures of the day" for the last month.
       Alternatively, you could select any starting date and pick another time range. Every photo has
       a "Like" button, use it to add it to your favourites.
     </div>
@@ -68,7 +68,12 @@
     </div>
 
     <transition name="fade" mode="out-in">
-      <v-row v-if="!$store.getters.getPendingPicturesLoading" :key="1">
+      <v-row
+        v-if="
+          !$store.getters.getPendingPicturesLoading && $store.getters.getPicturesOfTheDay.length
+        "
+        :key="1"
+      >
         <v-col
           v-for="(item, i) in $store.getters.getPicturesOfTheDay"
           :key="i"
@@ -80,7 +85,12 @@
         </v-col>
       </v-row>
 
-      <LoadingPlaceholder v-else :key="2" />
+      <LoadingPlaceholder v-else-if="$store.getters.getPendingPicturesLoading" :key="2" />
+
+      <div v-else class="d-flex flex-column align-center my-10">
+        <img src="@/assets/error.png" style="width: 100px" alt="" />
+        <div class="mt-5">Sorry, something went wrong. Try reloading the page</div>
+      </div>
     </transition>
   </v-container>
 </template>
@@ -109,6 +119,7 @@ export default {
   },
   async created() {
     this.$store.dispatch("fetchPicturesOfTheDay", this.get1MonthAgo);
+    this.$store.commit("retrieveFavoritesFromLocalStorage");
   },
 };
 </script>
