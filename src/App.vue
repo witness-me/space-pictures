@@ -56,4 +56,8 @@ body {
 .fade-leave-to {
   opacity: 0;
 }
+
+.v-icon {
+  cursor: pointer;
+}
 </style>

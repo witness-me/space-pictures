@@ -3,9 +3,14 @@
     <h1>My Favorites</h1>
     <v-row v-if="$store.getters.getFavorites.length">
       <v-col v-for="(item, i) in $store.getters.getFavorites" :key="i" cols="12" sm="6" lg="4">
-        <v-card>
-          <img :src="item.url" style="width: 100%" alt="" />
-        </v-card>
+        <transition name="fade">
+          <v-card>
+            <img :src="item.url" style="width: 100%" alt="" />
+            <v-icon @click="$store.commit('removeFromFavorites', item)"
+              >mdi-heart-off-outline</v-icon
+            >
+          </v-card>
+        </transition>
       </v-col>
     </v-row>
 
