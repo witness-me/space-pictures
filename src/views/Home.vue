@@ -66,7 +66,6 @@
         ></v-date-picker>
       </v-menu>
     </div>
-    <LoadingPlaceholder />
 
     <transition name="fade" mode="out-in">
       <v-row v-if="!$store.getters.getPendingPicturesLoading" :key="1">
