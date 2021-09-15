@@ -3,7 +3,7 @@
     <img :src="item.url" style="width: 100%" alt="" />
     <v-card-title>{{ item.title }}</v-card-title>
     <v-card-text>
-      <div class="my-4 text-subtitle-1">{{ item.explanation }}</div>
+      <!-- <div class="my-4 text-subtitle-1">{{ item.explanation }}</div> -->
 
       <div class="d-flex align-center justify-space-between">
         <div>{{ item.date }}</div>

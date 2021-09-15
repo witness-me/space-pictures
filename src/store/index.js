@@ -35,6 +35,9 @@ export default new Vuex.Store({
       const index = state.favoritePictures.findIndex((el) => el.url === picture.url);
       state.favoritePictures.splice(index, 1);
     },
+    clearFavorites(state) {
+      state.favoritePictures = [];
+    },
   },
   actions: {
     fetchPicturesOfTheDay: async ({ commit }, date) => {

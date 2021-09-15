@@ -1,18 +1,26 @@
 <template>
   <v-container>
-    <h1>My Favorites</h1>
-    <v-row v-if="$store.getters.getFavorites.length">
-      <v-col v-for="(item, i) in $store.getters.getFavorites" :key="i" cols="12" sm="6" lg="4">
-        <transition name="fade">
-          <v-card>
-            <img :src="item.url" style="width: 100%" alt="" />
-            <v-icon @click="$store.commit('removeFromFavorites', item)"
-              >mdi-heart-off-outline</v-icon
-            >
-          </v-card>
-        </transition>
-      </v-col>
-    </v-row>
+    <div class="d-flex align-center justify-space-between">
+      <h1>My Favorites</h1>
+      <v-btn v-if="$store.getters.getFavorites.length" @click="$store.commit('clearFavorites')">
+        Clear Favorites
+      </v-btn>
+    </div>
+
+    <div v-if="$store.getters.getFavorites.length">
+      <v-row>
+        <v-col v-for="(item, i) in $store.getters.getFavorites" :key="i" cols="12" sm="6" lg="4">
+          <transition name="fade">
+            <v-card>
+              <img :src="item.url" style="width: 100%" alt="" />
+              <v-icon @click="$store.commit('removeFromFavorites', item)"
+                >mdi-heart-off-outline</v-icon
+              >
+            </v-card>
+          </transition>
+        </v-col>
+      </v-row>
+    </div>
 
     <div v-else class="d-flex flex-column align-center my-10 pt-15">
       <img src="@/assets/pictures.png" alt="" />

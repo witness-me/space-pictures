@@ -60,4 +60,7 @@ body {
 .v-icon {
   cursor: pointer;
 }
+a {
+  text-decoration: none;
+}
 </style>
