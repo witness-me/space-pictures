@@ -21,11 +21,11 @@ export default {
 <style lang="scss">
 #app {
   font-family: "Barlow", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   $body-font-family: "Barlow";
   $title-font: "Barlow";
 }
+
+// scroll styling
 body {
   &::-webkit-scrollbar {
     width: 16px;
@@ -43,5 +43,17 @@ body {
       background-color: #7e2216;
     }
   }
+}
+
+// vue transitions
+.fade-leave-active {
+  transition: opacity 0.2s;
+}
+.fade-enter-active {
+  transition: opacity 0.4s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     picturesOfTheDay: [],
     favoritePictures: [],
+    pendingPicturesLoading: false,
   },
   getters: {
     getPicturesOfTheDay(state) {
@@ -16,10 +17,16 @@ export default new Vuex.Store({
     getFavorites(state) {
       return state.favoritePictures;
     },
+    getPendingPicturesLoading(state) {
+      return state.pendingPicturesLoading;
+    },
   },
   mutations: {
     setPicturesOfTheDay(state, payload) {
       state.picturesOfTheDay = payload;
+    },
+    setPendingPicturesLoading(state, value) {
+      state.pendingPicturesLoading = value;
     },
     addToFavorites(state, picture) {
       state.favoritePictures.push(picture);
@@ -31,10 +38,13 @@ export default new Vuex.Store({
   },
   actions: {
     fetchPicturesOfTheDay: async ({ commit }, date) => {
+      commit("setPendingPicturesLoading", true);
+
       const resp = await api.getPicturesOfTheDay(date);
       const picturesList = resp.data.filter((item) => item.media_type === "image").reverse();
 
       commit("setPicturesOfTheDay", picturesList);
+      commit("setPendingPicturesLoading", false);
     },
   },
   modules: {},
