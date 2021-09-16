@@ -1,11 +1,11 @@
 <template>
-  <v-container class="pt-0">
+  <v-container class="py-0">
     <div class="d-flex justify-end">
       <router-link v-if="$route.name === 'Home'" to="/favorites">
-        <v-btn color="blue-grey darken-3" class="navbar-button">To Favorites</v-btn>
+        <v-btn class="navbar-button">To Favorites</v-btn>
       </router-link>
       <router-link v-else to="/">
-        <v-btn color="blue-grey darken-2" class="navbar-button">Back To Home Page</v-btn>
+        <v-btn class="navbar-button">Back To Home Page</v-btn>
       </router-link>
     </div>
   </v-container>
@@ -23,6 +23,11 @@ export default {
   height: 44px !important;
   border-top-right-radius: 0 !important;
   border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 7px !important;
+  border-bottom-right-radius: 7px !important;
   text-transform: none !important;
+  background: #37474f !important;
+  border: 1px solid #b0bec5 !important;
+  border-top: none !important;
 }
 </style>

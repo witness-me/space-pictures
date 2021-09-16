@@ -1,7 +1,7 @@
 <template>
-  <v-card>
-    <img :src="item.url" style="width: 100%" alt="" />
-    <div class="d-flex justify-apace-between align-center pr-3">
+  <v-card class="card">
+    <img :src="item.url" class="card__image" alt="" />
+    <div class="d-flex">
       <v-card-title class="pt-3">{{ item.title }}</v-card-title>
     </div>
 
@@ -43,3 +43,15 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.card {
+  background: #202a30 !important;
+  border: 1px solid #415355 !important;
+
+  &__image {
+    width: 100%;
+    border-bottom: 1px solid #37474f;
+  }
+}
+</style>

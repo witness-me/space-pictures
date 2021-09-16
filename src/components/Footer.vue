@@ -28,10 +28,13 @@ export default {
 .footer {
   background: linear-gradient(#263238, #1c2529);
   height: 56px;
+  border-top: 1px solid #415355;
 
-  .v-icon {
-    font-size: 20px !important;
+  a {
     margin: 2px 4px 3px;
+    .v-icon {
+      font-size: 20px !important;
+    }
   }
 }
 </style>

@@ -37,15 +37,13 @@ body {
     background-color: #313131;
   }
   &::-webkit-scrollbar-thumb {
-    // background-color: #9a2a1b;
     background-color: #90a4ae;
     border-radius: 4px;
     border: 2px solid transparent;
     background-clip: content-box;
 
     &:hover {
-      // background-color: #7e2216;
-      background-color: #78909c;
+      background-color: #546e7a;
     }
   }
 }
