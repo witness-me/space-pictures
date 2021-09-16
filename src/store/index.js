@@ -15,7 +15,8 @@ export default new Vuex.Store({
       return state.picturesOfTheDay;
     },
     getFavorites(state) {
-      return state.favoritePictures;
+      const items = [...state.favoritePictures];
+      return items.reverse();
     },
     getPendingPicturesLoading(state) {
       return state.pendingPicturesLoading;

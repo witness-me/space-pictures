@@ -7,17 +7,17 @@
 
       <div class="d-flex align-center justify-space-between">
         <div>{{ item.date }}</div>
-        <transition name="fade" mode="out-in">
+        <transition name="fade">
           <v-btn
             v-if="$store.getters.getFavorites.findIndex((pic) => pic.url === item.url) === -1"
             color="deep-purple lighten-2"
-            text
+            icon
             @click="addToFavorites(item)"
           >
-            Like
+            <v-icon>mdi-heart-outline</v-icon>
           </v-btn>
-          <v-btn v-else color="deep-purple lighten-2" @click="removeFromFavorites(item)">
-            Unlike
+          <v-btn v-else color="deep-purple lighten-2" icon @click="removeFromFavorites(item)">
+            <v-icon>mdi-heart</v-icon>
           </v-btn>
         </transition>
       </div>

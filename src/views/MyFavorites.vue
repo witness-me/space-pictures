@@ -9,13 +9,18 @@
 
     <div v-if="$store.getters.getFavorites.length">
       <v-row>
-        <v-col v-for="(item, i) in $store.getters.getFavorites" :key="i" cols="12" sm="6" lg="4">
-          <v-card>
-            <img :src="item.url" style="width: 100%" alt="" />
-            <v-icon @click="$store.commit('removeFromFavorites', item)"
-              >mdi-heart-off-outline</v-icon
-            >
-          </v-card>
+        <v-col
+          v-for="(item, i) in $store.getters.getFavorites"
+          :key="i"
+          cols="12"
+          sm="6"
+          lg="4"
+          class="picture-container"
+        >
+          <v-btn icon @click="$store.commit('removeFromFavorites', item)">
+            <v-icon color="red">mdi-heart-off-outline</v-icon>
+          </v-btn>
+          <img :src="item.url" style="width: 100%" alt="" />
         </v-col>
       </v-row>
     </div>
@@ -39,3 +44,20 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.picture-container {
+  position: relative;
+
+  > button {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  }
+
+  img {
+    border: 1px solid paleturquoise;
+    border-radius: 5px;
+  }
+}
+</style>
