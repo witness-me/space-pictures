@@ -47,10 +47,10 @@ body {
 
 // vue transitions
 .fade-leave-active {
-  transition: opacity 0.2s;
+  transition: opacity 2s;
 }
 .fade-enter-active {
-  transition: opacity 0.4s;
+  transition: opacity 4s;
 }
 .fade-enter,
 .fade-leave-to {

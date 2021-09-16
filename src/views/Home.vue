@@ -17,17 +17,13 @@
         hide-details
         class="gray--text text--lighten-3 mr-3 my-1"
         color="purple lighten-2"
-        label="Type your search string"
-        style="max-width: 250px"
+        label="Search By Title Or Description"
+        style="max-width: 450px"
         outlined
         dense
         v-model="searchString"
       >
-        <template #append>
-          <v-btn height="24px" width="75px"> Search </v-btn>
-        </template>
       </v-text-field>
-      <v-btn class="my-1"> Search </v-btn>
       <v-spacer />
 
       <v-menu

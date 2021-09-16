@@ -7,17 +7,19 @@
 
       <div class="d-flex align-center justify-space-between">
         <div>{{ item.date }}</div>
-        <v-btn
-          v-if="$store.getters.getFavorites.findIndex((pic) => pic.url === item.url) === -1"
-          color="deep-purple lighten-2"
-          text
-          @click="addToFavorites(item)"
-        >
-          Like
-        </v-btn>
-        <v-btn v-else color="deep-purple lighten-2" @click="removeFromFavorites(item)">
-          Unlike
-        </v-btn>
+        <transition name="fade" mode="out-in">
+          <v-btn
+            v-if="$store.getters.getFavorites.findIndex((pic) => pic.url === item.url) === -1"
+            color="deep-purple lighten-2"
+            text
+            @click="addToFavorites(item)"
+          >
+            Like
+          </v-btn>
+          <v-btn v-else color="deep-purple lighten-2" @click="removeFromFavorites(item)">
+            Unlike
+          </v-btn>
+        </transition>
       </div>
     </v-card-text>
   </v-card>
