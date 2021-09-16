@@ -1,15 +1,15 @@
 <template>
   <v-container>
-    <h1 class="header-text-1">Spacey</h1>
+    <h1>Spacey</h1>
     <div>
-      Here you will see the collection of most stunning Space photos, thorougly selected for you by
-      NASA. By defeault, you will get the best of the "Pictures of the day" for the last month.
-      Alternatively, you could select any starting date you want. Every photo has a "Like" button,
-      feel free to use it to add it to your favourites.
+      Here you will see the collection of the most stunning Space photos, thoroughly selected for
+      you by NASA. By default, you will get the best of the "Pictures of the day" for the last
+      month. Alternatively, you could select any starting date you want. Every photo has a "Like"
+      button, feel free to use it to add it to your favorites. To filter the results use the text
+      field below
     </div>
-    <div>You can also filter the results by any keyword</div>
 
-    <div class="d-flex align-center flex-wrap">
+    <div class="d-flex align-center">
       <v-text-field
         hide-details
         class="gray--text text--lighten-3 mr-3 my-1"
