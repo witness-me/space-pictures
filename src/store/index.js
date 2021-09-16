@@ -39,7 +39,7 @@ export default new Vuex.Store({
     },
     clearFavorites(state) {
       state.favoritePictures = [];
-      localStorage.setItem("favorites", "[]");
+      localStorage.setItem("favorites", JSON.stringify(state.favoritePictures));
     },
     retrieveFavoritesFromLocalStorage(state) {
       state.favoritePictures = JSON.parse(localStorage.getItem("favorites")) || [];

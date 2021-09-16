@@ -10,14 +10,12 @@
     <div v-if="$store.getters.getFavorites.length">
       <v-row>
         <v-col v-for="(item, i) in $store.getters.getFavorites" :key="i" cols="12" sm="6" lg="4">
-          <transition name="fade">
-            <v-card>
-              <img :src="item.url" style="width: 100%" alt="" />
-              <v-icon @click="$store.commit('removeFromFavorites', item)"
-                >mdi-heart-off-outline</v-icon
-              >
-            </v-card>
-          </transition>
+          <v-card>
+            <img :src="item.url" style="width: 100%" alt="" />
+            <v-icon @click="$store.commit('removeFromFavorites', item)"
+              >mdi-heart-off-outline</v-icon
+            >
+          </v-card>
         </v-col>
       </v-row>
     </div>
