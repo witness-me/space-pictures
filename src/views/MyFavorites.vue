@@ -18,7 +18,7 @@
           class="picture-container"
         >
           <v-btn icon @click="$store.commit('removeFromFavorites', item)">
-            <v-icon color="red">mdi-heart-off-outline</v-icon>
+            <v-icon color="red">mdi-heart-off</v-icon>
           </v-btn>
           <img :src="item.url" style="width: 100%" alt="" />
         </v-col>

@@ -5,16 +5,19 @@
     <v-main>
       <router-view />
     </v-main>
+
+    <Footer />
   </v-app>
 </template>
 
 <script>
 import AppBar from "@/components/AppBar.vue";
+import Footer from "@/components/Footer.vue";
 export default {
   name: "App",
 
   data: () => ({}),
-  components: { AppBar },
+  components: { AppBar, Footer },
 };
 </script>
 
@@ -34,23 +37,25 @@ body {
     background-color: #313131;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #9a2a1b;
+    // background-color: #9a2a1b;
+    background-color: #90a4ae;
     border-radius: 4px;
     border: 2px solid transparent;
     background-clip: content-box;
 
     &:hover {
-      background-color: #7e2216;
+      // background-color: #7e2216;
+      background-color: #78909c;
     }
   }
 }
 
 // vue transitions
 .fade-leave-active {
-  transition: opacity 2s;
+  transition: opacity 0.2s;
 }
 .fade-enter-active {
-  transition: opacity 4s;
+  transition: opacity 0.4s;
 }
 .fade-enter,
 .fade-leave-to {
