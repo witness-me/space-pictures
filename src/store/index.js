@@ -22,12 +22,17 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    // pictures of the day
     setPicturesOfTheDay(state, payload) {
       state.picturesOfTheDay = payload;
     },
+
+    // pending
     setPendingPicturesLoading(state, value) {
       state.pendingPicturesLoading = value;
     },
+
+    // favorites
     addToFavorites(state, picture) {
       state.favoritePictures.push(picture);
       localStorage.setItem("favorites", JSON.stringify(state.favoritePictures));
@@ -48,6 +53,8 @@ export default new Vuex.Store({
   actions: {
     fetchPicturesOfTheDay: async ({ commit }, date) => {
       commit("setPendingPicturesLoading", true);
+      // clearing pictures to prevent the situation with server error, but getter still returning items
+      commit("setPicturesOfTheDay", []);
 
       try {
         const resp = await api.getPicturesOfTheDay(date);

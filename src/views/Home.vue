@@ -74,13 +74,7 @@
         "
         :key="1"
       >
-        <v-col
-          v-for="(item, i) in $store.getters.getPicturesOfTheDay"
-          :key="i"
-          cols="12"
-          sm="6"
-          lg="4"
-        >
+        <v-col v-for="(item, i) in filteredPicturesOfTheDay" :key="i" cols="12" sm="6" lg="4">
           <PhotoCard :item="item" />
         </v-col>
       </v-row>
@@ -109,8 +103,19 @@ export default {
       selectedDate: null,
     };
   },
+
   mixins: [datesMixin],
   components: { PhotoCard, LoadingPlaceholder },
+  computed: {
+    filteredPicturesOfTheDay() {
+      return this.$store.getters.getPicturesOfTheDay.filter((pic) => {
+        return (
+          pic.title.toLowerCase().includes(this.searchString.toLowerCase()) ||
+          pic.explanation.toLowerCase().includes(this.searchString.toLowerCase())
+        );
+      });
+    },
+  },
   methods: {
     onDateSelect(date) {
       this.showDatePicker = false;
