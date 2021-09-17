@@ -7,7 +7,7 @@
         <v-icon> mdi-email-outline </v-icon>
       </a>
 
-      <a href="https://github.com/witness-me" target="_blank">
+      <a href="https://github.com/witness-me/space-pictures" target="_blank">
         <v-icon> mdi-github </v-icon>
       </a>
       <a href="https://www.linkedin.com/in/vladislav-nikolaenko/" target="_blank">
