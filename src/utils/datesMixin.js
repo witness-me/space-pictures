@@ -14,5 +14,4 @@ export default {
       return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
     },
   },
-  methods: {},
 };

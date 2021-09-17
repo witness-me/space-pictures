@@ -24,6 +24,20 @@ export default {
 <style lang="scss">
 #app {
   font-family: "Barlow", sans-serif;
+
+  h1 {
+    font-size: 36px;
+    font-weight: 500;
+  }
+  h2 {
+    font-weight: 600;
+  }
+  a {
+    text-decoration: none;
+  }
+  .placeholder-picture {
+    width: 80px;
+  }
 }
 
 // scroll styling
@@ -46,7 +60,7 @@ body {
   }
 }
 
-// vue transitions
+// vue fade transitions
 .fade-leave-active {
   transition: opacity 0.2s;
 }
@@ -56,15 +70,5 @@ body {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
-}
-
-.v-icon {
-  cursor: pointer;
-}
-a {
-  text-decoration: none;
-}
-.placeholder-picture {
-  width: 80px;
 }
 </style>

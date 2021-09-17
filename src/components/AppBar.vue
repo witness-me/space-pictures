@@ -25,7 +25,6 @@ export default {
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 6px !important;
   border-bottom-right-radius: 6px !important;
-  text-transform: none !important;
   background: #202629 !important;
   border: 1px solid #415355 !important;
   border-top: none !important;

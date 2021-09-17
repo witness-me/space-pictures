@@ -54,7 +54,7 @@ export default new Vuex.Store({
   actions: {
     fetchPicturesOfTheDay: async ({ commit }, date) => {
       commit("setPendingPicturesLoading", true);
-      // clearing pictures to prevent the situation with server error, but getter still returning items
+      // clear pictures to prevent the situation with server error, but getter still returning items
       commit("setPicturesOfTheDay", []);
 
       try {

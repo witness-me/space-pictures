@@ -18,12 +18,10 @@
         class="mr-3 my-1"
         color="blue-grey lighten-3"
         label="Search By Title Or Description"
-        style="max-width: 500px"
         outlined
         dense
         v-model="searchString"
-      >
-      </v-text-field>
+      ></v-text-field>
 
       <v-menu
         v-model="showDatePicker"
@@ -57,7 +55,6 @@
         </template>
 
         <v-date-picker
-          v-model="selectedDate"
           color="orange darken-4"
           no-title
           :max="today"
@@ -67,25 +64,20 @@
     </div>
 
     <transition name="fade" mode="out-in">
-      <v-row
-        v-if="
-          !$store.getters.getPendingPicturesLoading && $store.getters.getPicturesOfTheDay.length
-        "
-        class="mb-5"
-      >
+      <LoadingPlaceholder v-if="$store.getters.getPendingPicturesLoading" :key="1" />
+
+      <v-row v-else-if="$store.getters.getPicturesOfTheDay.length" :key="2" class="mb-5">
         <v-col v-for="(item, i) in filteredPicturesOfTheDay" :key="i" cols="12" sm="6" lg="4">
           <PhotoCard :item="item" />
         </v-col>
       </v-row>
 
-      <LoadingPlaceholder v-else-if="$store.getters.getPendingPicturesLoading" :key="2" />
-
-      <div v-else class="d-flex flex-column align-center my-15">
+      <div v-else :key="3" class="d-flex flex-column align-center my-15">
         <img src="@/assets/error.png" class="placeholder-picture" alt="" />
         <!-- The image above is made by www.freepik.com from https://www.flaticon.com/ -->
         <small class="mt-2 text-center blue-grey--text text--lighten-5">
           Sorry, something went wrong... <br />
-          Try reloading the page
+          Try reloading the page or choosing another date range
         </small>
       </div>
     </transition>
@@ -115,11 +107,9 @@ export default {
     return {
       searchString: "",
       showDatePicker: false,
-      selectedDate: null,
       showScrollButton: false,
     };
   },
-
   mixins: [datesMixin],
   components: { PhotoCard, LoadingPlaceholder },
   computed: {
@@ -148,8 +138,8 @@ export default {
     if (!this.$store.getters.getPicturesOfTheDay.length) {
       this.$store.dispatch("fetchPicturesOfTheDay", this.get1MonthAgo);
     }
-    this.$store.commit("retrieveFavoritesFromLocalStorage");
 
+    this.$store.commit("retrieveFavoritesFromLocalStorage");
     window.addEventListener("scroll", this.handleScroll);
   },
   destroyed() {
@@ -159,49 +149,46 @@ export default {
 </script>
 
 <style lang="scss">
-h1 {
-  font-size: 36px;
-  font-weight: 500;
-}
-h2 {
-  font-weight: 600;
-}
-.logo {
-  height: 32px;
-  margin-top: 8px;
-}
-.intro-text {
-  font-size: 18px;
-}
-.v-input {
-  label {
-    color: #b0bec5 !important;
+.home {
+  .logo {
+    height: 32px;
+    margin-top: 8px;
   }
-  input {
-    color: #eceff1 !important;
+  .intro-text {
+    font-size: 18px;
   }
-}
-
-.up-button {
-  position: fixed;
-  bottom: 64px;
-  right: 20px;
-  opacity: 0.7 !important;
-  border-radius: 7px !important;
-
-  .v-icon {
-    margin-top: 2px;
+  .v-input.v-text-field {
+    max-width: 500px;
+    label {
+      color: #b0bec5 !important;
+    }
+    input {
+      color: #eceff1 !important;
+    }
   }
-}
 
-// scroll-to-top button transitions
-.slide-fade-enter-active,
-.slide-fade-leave-active {
-  transition: all 0.5s ease;
-}
-.slide-fade-enter,
-.slide-fade-leave-to {
-  transform: translateX(150px);
-  opacity: 0;
+  // scroll-to-top button styles
+  .up-button {
+    position: fixed;
+    bottom: 64px;
+    right: 20px;
+    opacity: 0.7 !important;
+    border-radius: 7px !important;
+
+    .v-icon {
+      margin-top: 2px;
+    }
+  }
+
+  // scroll-to-top button transitions
+  .slide-fade-enter-active,
+  .slide-fade-leave-active {
+    transition: all 0.5s ease;
+  }
+  .slide-fade-enter,
+  .slide-fade-leave-to {
+    transform: translateX(150px);
+    opacity: 0;
+  }
 }
 </style>

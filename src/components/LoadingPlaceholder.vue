@@ -1,6 +1,6 @@
 <template>
-  <div class="d-flex flex-column align-center my-15">
-    <img src="@/assets/rocket.gif" style="width: 110px" alt="" />
+  <div class="loading-placeholder d-flex flex-column align-center my-15">
+    <img src="@/assets/rocket.gif" alt="" />
     <small class="blue-grey--text text--lighten-5">Retrieving data from the servers...</small>
   </div>
 </template>
@@ -10,3 +10,11 @@ export default {
   name: "LoadingPlaceholder",
 };
 </script>
+
+<style lang="scss" scoped>
+.loading-placeholder {
+  img {
+    width: 100px;
+  }
+}
+</style>

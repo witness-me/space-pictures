@@ -1,17 +1,19 @@
 <template>
   <footer class="footer d-flex flex-column align-center justify-center">
-    <small class="font-weight-medium">Designed by Vlad Nikolaenko</small>
+    <small class="font-weight-medium blue-grey--text text--lighten-5"
+      >Designed by Vlad Nikolaenko</small
+    >
 
     <div class="d-flex">
       <a href="mailto:vladislavnikolaenko@gmail.com" target="_blank">
-        <v-icon> mdi-email-outline </v-icon>
+        <v-icon size="20" color="#CFD8DC"> mdi-email-outline </v-icon>
       </a>
 
       <a href="https://github.com/witness-me/space-pictures" target="_blank">
-        <v-icon> mdi-github </v-icon>
+        <v-icon size="20" color="#CFD8DC"> mdi-github </v-icon>
       </a>
       <a href="https://www.linkedin.com/in/vladislav-nikolaenko/" target="_blank">
-        <v-icon> mdi-linkedin </v-icon>
+        <v-icon size="20" color="#CFD8DC"> mdi-linkedin </v-icon>
       </a>
     </div>
   </footer>
@@ -20,7 +22,6 @@
 <script>
 export default {
   name: "Footer",
-  data: () => ({}),
 };
 </script>
 
@@ -32,9 +33,6 @@ export default {
 
   a {
     margin: 0 4px;
-    .v-icon {
-      font-size: 20px !important;
-    }
   }
 }
 </style>
