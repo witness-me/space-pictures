@@ -20,7 +20,7 @@
           cols="12"
           sm="6"
           lg="4"
-          class="picture-container"
+          class="picture-container pb-2"
         >
           <v-btn icon @click="$store.commit('removeFromFavorites', item)">
             <v-icon color="red">mdi-heart-off</v-icon>

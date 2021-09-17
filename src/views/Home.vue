@@ -89,6 +89,18 @@
         </small>
       </div>
     </transition>
+
+    <transition name="slide-fade">
+      <v-btn
+        v-if="showScrollButton"
+        color="blue-grey lighten-1"
+        class="up-button"
+        @click="scrollToTop"
+      >
+        Go Up
+        <v-icon size="15" class="ml-1">mdi-arrow-up-right</v-icon>
+      </v-btn>
+    </transition>
   </v-container>
 </template>
 
@@ -104,6 +116,7 @@ export default {
       searchString: "",
       showDatePicker: false,
       selectedDate: null,
+      showScrollButton: false,
     };
   },
 
@@ -124,10 +137,24 @@ export default {
       this.showDatePicker = false;
       this.$store.dispatch("fetchPicturesOfTheDay", date);
     },
+    scrollToTop() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    },
+    handleScroll() {
+      window.pageYOffset > 400 ? (this.showScrollButton = true) : (this.showScrollButton = false);
+    },
   },
-  async created() {
-    this.$store.dispatch("fetchPicturesOfTheDay", this.get1MonthAgo);
+  created() {
+    if (!this.$store.getters.getPicturesOfTheDay.length) {
+      this.$store.dispatch("fetchPicturesOfTheDay", this.get1MonthAgo);
+    }
     this.$store.commit("retrieveFavoritesFromLocalStorage");
+
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
 };
 </script>
@@ -142,7 +169,7 @@ h2 {
 }
 .logo {
   height: 32px;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 .intro-text {
   font-size: 18px;
@@ -154,5 +181,28 @@ h2 {
   input {
     color: #eceff1 !important;
   }
+}
+
+.up-button {
+  position: fixed;
+  bottom: 64px;
+  right: 20px;
+  opacity: 0.7 !important;
+  border-radius: 7px !important;
+
+  .v-icon {
+    margin-top: 2px;
+  }
+}
+
+// scroll-to-top button transitions
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.5s ease;
+}
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateX(150px);
+  opacity: 0;
 }
 </style>

@@ -3,7 +3,6 @@
     <v-card-text class="mt-8 mb-5">
       <div class="text-center blue-grey--text text--lighten-5">
         <div>Are you sure that you want to delete all pictures from favorites?</div>
-        <div>This can not be undone!</div>
       </div>
     </v-card-text>
 
