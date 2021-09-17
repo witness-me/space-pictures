@@ -1,27 +1,28 @@
 <template>
-  <v-container>
-    <h1>Spacey</h1>
-    <div>
-      Here you will see the collection of the most stunning Space photos, thoroughly selected for
-      you by NASA. By default, you will get the best of the "Pictures of the day" for the last
-      month. Alternatively, you could select any starting date you want. Every photo has a "Like"
-      button, feel free to use it to add it to your favorites. To filter the results use the text
-      field below
+  <v-container class="home pt-0">
+    <div class="d-flex align-center mb-2">
+      <h1 class="blue-grey--text text--lighten-5 mr-2">Spacey</h1>
+      <img src="@/assets/planet.png" class="logo" alt="" />
+      <!-- The image above is made by www.freepik.com from https://www.flaticon.com/ -->
+    </div>
+    <div class="blue-grey--text text--lighten-5">
+      This is a small app presenting you the Astronomy Pictures Of the Day - the most stunning Space
+      photos, selected for you by NASA. Feel free to like the photos that appeal to you, the
+      collection of your favorite pictures is saved in your "Favorites" tab
     </div>
 
-    <div class="d-flex align-center mb-4">
+    <div class="d-flex justify-space-between align-center mb-4 mt-6">
       <v-text-field
         hide-details
-        class="gray--text text--lighten-3 mr-3 my-1"
-        color="purple lighten-2"
+        class="mr-3 my-1"
+        color="blue-grey lighten-3"
         label="Search By Title Or Description"
-        style="max-width: 450px"
+        style="max-width: 500px"
         outlined
         dense
         v-model="searchString"
       >
       </v-text-field>
-      <v-spacer />
 
       <v-menu
         v-model="showDatePicker"
@@ -38,21 +39,25 @@
         <template v-slot:activator="{ on: onMenu }">
           <v-tooltip bottom :disabled="showDatePicker" max-width="300px">
             <template v-slot:activator="{ on: onTooltip }">
-              <v-btn class="my-2 ml-2" v-on="{ ...onMenu, ...onTooltip }">
-                Pick date
+              <v-btn
+                v-on="{ ...onMenu, ...onTooltip }"
+                color="blue-grey darken-3"
+                class="blue-grey--text text--lighten-5"
+              >
+                Pick Date
                 <v-icon class="ml-1">mdi-help-circle-outline</v-icon>
               </v-btn>
             </template>
-            <span
-              >By defeault, you are getting pictures for the last month. If you wish to change this
-              time range, you can choose an alternative date from which this period will begin</span
-            >
+            <span>
+              By default, you get the pictures for the last 1 month. If you wish to change this time
+              range, pick an alternative date from which this period will begin
+            </span>
           </v-tooltip>
         </template>
 
         <v-date-picker
           v-model="selectedDate"
-          color="purple darken-2"
+          color="orange darken-4"
           no-title
           :max="today"
           @input="onDateSelect"
@@ -76,6 +81,7 @@
 
       <div v-else class="d-flex flex-column align-center my-10">
         <img src="@/assets/error.png" style="width: 100px" alt="" />
+        <!-- The image above is made by www.freepik.com from https://www.flaticon.com/ -->
         <div class="mt-5">Sorry, something went wrong. Try reloading the page</div>
       </div>
     </transition>
@@ -122,4 +128,21 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+h1 {
+  font-size: 36px;
+  font-weight: 500;
+}
+.logo {
+  height: 32px;
+  margin-top: 6px;
+}
+.v-input {
+  label {
+    color: #b0bec5 !important;
+  }
+  input {
+    color: #eceff1 !important;
+  }
+}
+</style>

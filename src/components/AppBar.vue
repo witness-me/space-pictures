@@ -14,20 +14,21 @@
 <script>
 export default {
   name: "AppBar",
-  data: () => ({}),
 };
 </script>
 
 <style lang="scss">
 .navbar-button {
-  height: 44px !important;
+  height: 42px !important;
+  width: 180px;
   border-top-right-radius: 0 !important;
   border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 7px !important;
-  border-bottom-right-radius: 7px !important;
+  border-bottom-left-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
   text-transform: none !important;
-  background: #37474f !important;
-  border: 1px solid #b0bec5 !important;
+  background: #202629 !important;
+  border: 1px solid #415355 !important;
   border-top: none !important;
+  color: #eceff1 !important;
 }
 </style>

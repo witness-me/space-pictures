@@ -24,8 +24,6 @@ export default {
 <style lang="scss">
 #app {
   font-family: "Barlow", sans-serif;
-  $body-font-family: "Barlow";
-  $title-font: "Barlow";
 }
 
 // scroll styling

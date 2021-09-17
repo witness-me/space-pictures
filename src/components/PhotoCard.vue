@@ -2,24 +2,24 @@
   <v-card class="card">
     <img :src="item.url" class="card__image" alt="" />
     <div class="d-flex">
-      <v-card-title class="pt-3">{{ item.title }}</v-card-title>
+      <v-card-title class="blue-grey--text text--lighten-5 py-1">{{ item.title }}</v-card-title>
     </div>
 
-    <v-card-text>
-      <small> {{ item.explanation }} </small>
+    <v-card-text class="pt-1">
+      <small class="blue-grey--text text--lighten-4"> {{ item.explanation }} </small>
 
       <div class="d-flex align-center justify-space-between">
-        <div>{{ item.date.replaceAll("-", "/") }}</div>
+        <div class="blue-grey--text text--lighten-2">{{ item.date.replaceAll("-", "/") }}</div>
         <v-btn
           v-if="$store.getters.getFavorites.findIndex((pic) => pic.url === item.url) === -1"
-          color="deep-purple lighten-2"
+          color="orange accent-4"
           icon
           @click="addToFavorites(item)"
         >
-          <v-icon>mdi-heart-outline</v-icon>
+          <v-icon size="24">mdi-heart-outline</v-icon>
         </v-btn>
-        <v-btn v-else color="deep-purple lighten-2" icon @click="removeFromFavorites(item)">
-          <v-icon>mdi-heart</v-icon>
+        <v-btn v-else color="orange accent-4" icon @click="removeFromFavorites(item)">
+          <v-icon size="28">mdi-heart</v-icon>
         </v-btn>
       </div>
     </v-card-text>
