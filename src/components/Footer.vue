@@ -1,6 +1,6 @@
 <template>
   <footer class="footer d-flex flex-column align-center justify-center">
-    <small class="font-weight-medium">Created by Vlad Nikolaenko</small>
+    <small class="font-weight-medium">Designed by Vlad Nikolaenko</small>
 
     <div class="d-flex">
       <a href="mailto:vladislavnikolaenko@gmail.com" target="_blank">

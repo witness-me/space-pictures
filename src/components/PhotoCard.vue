@@ -1,9 +1,7 @@
 <template>
   <v-card class="card">
     <img :src="item.url" class="card__image" alt="" />
-    <div class="d-flex">
-      <v-card-title class="blue-grey--text text--lighten-5 py-1">{{ item.title }}</v-card-title>
-    </div>
+    <v-card-title class="blue-grey--text text--lighten-5 py-1">{{ item.title }}</v-card-title>
 
     <v-card-text class="pt-1">
       <small class="blue-grey--text text--lighten-4"> {{ item.explanation }} </small>

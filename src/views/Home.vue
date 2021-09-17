@@ -79,10 +79,13 @@
 
       <LoadingPlaceholder v-else-if="$store.getters.getPendingPicturesLoading" :key="2" />
 
-      <div v-else class="d-flex flex-column align-center my-10">
-        <img src="@/assets/error.png" style="width: 100px" alt="" />
+      <div v-else class="d-flex flex-column align-center my-15">
+        <img src="@/assets/error.png" class="placeholder-picture" alt="" />
         <!-- The image above is made by www.freepik.com from https://www.flaticon.com/ -->
-        <div class="mt-5">Sorry, something went wrong. Try reloading the page</div>
+        <small class="mt-2 text-center blue-grey--text text--lighten-5">
+          Sorry, something went wrong... <br />
+          Try reloading the page
+        </small>
       </div>
     </transition>
   </v-container>
@@ -132,6 +135,9 @@ export default {
 h1 {
   font-size: 36px;
   font-weight: 500;
+}
+h2 {
+  font-weight: 600;
 }
 .logo {
   height: 32px;

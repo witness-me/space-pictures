@@ -64,4 +64,7 @@ body {
 a {
   text-decoration: none;
 }
+.placeholder-picture {
+  width: 80px;
+}
 </style>
