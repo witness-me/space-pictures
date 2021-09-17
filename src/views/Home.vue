@@ -5,10 +5,11 @@
       <img src="@/assets/planet.png" class="logo" alt="" />
       <!-- The image above is made by www.freepik.com from https://www.flaticon.com/ -->
     </div>
-    <div class="blue-grey--text text--lighten-5">
-      This is a small app presenting you the Astronomy Pictures Of the Day - the most stunning Space
-      photos, selected for you by NASA. Feel free to like the photos that appeal to you, the
-      collection of your favorite pictures is saved in your "Favorites" tab
+    <div class="intro-text blue-grey--text text--lighten-5">
+      This is a small app presenting the Astronomy Pictures Of the Day - the most stunning Space
+      photos, selected for you by NASA. <br />
+      Feel free to like the photos that appeal to you, the collection of your favorite pictures is
+      saved in your <strong>Favorites</strong> tab
     </div>
 
     <div class="d-flex justify-space-between align-center mb-4 mt-6">
@@ -142,6 +143,9 @@ h2 {
 .logo {
   height: 32px;
   margin-top: 6px;
+}
+.intro-text {
+  font-size: 18px;
 }
 .v-input {
   label {

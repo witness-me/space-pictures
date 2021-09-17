@@ -1,13 +1,13 @@
 <template>
   <v-container class="py-0">
-    <div class="d-flex justify-end">
+    <nav class="d-flex justify-end">
       <router-link v-if="$route.name === 'Home'" to="/favorites">
         <v-btn class="navbar-button">To Favorites</v-btn>
       </router-link>
       <router-link v-else to="/">
         <v-btn class="navbar-button">Back To Home Page</v-btn>
       </router-link>
-    </div>
+    </nav>
   </v-container>
 </template>
 
