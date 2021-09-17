@@ -46,6 +46,11 @@ export default {
 .card {
   background: #202a30 !important;
   border: 1px solid #415355 !important;
+  word-break: keep-all;
+
+  .v-card__title {
+    word-break: keep-all;
+  }
 
   &__image {
     width: 100%;
